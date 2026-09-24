@@ -20,6 +20,7 @@ html, body {
     background-size: cover;
     height: 100vh;
     position: relative;
+    padding-top: 80px; /* تعويض ارتفاع الهيدر الثابت */
 }
 
 .home::before {
@@ -51,11 +52,11 @@ html, body {
     background-color: #333;
     color: white;
     padding: 0 5rem;
-    position: relative;
-    position: sticky;
-    position: fixed;
+    position: fixed; /* تثبيت الهيدر أعلى الصفحة أثناء التمرير */
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .logo img {
@@ -79,16 +80,16 @@ html, body {
     margin: 0px 20px;
     transition: 0.3s;
 }
-.nav-bar ul li a:hover{
+
+.nav-bar ul li a:hover {
     background-color: #EEA727;
     border-radius: 10px;
     padding: 10px;
 }
+
 @media (max-width: 900px) {
     .header {
         padding: 0 3rem;
-        position: relative;
-        position: fixed;
     }
 
     .humbrger-bar {
@@ -121,13 +122,13 @@ html, body {
         top: 80px;
         left: 0px;
         width: 100%;
-        background-color: #333; /* خلفية غير شفافة لتغطي محتوى الصفحة */
+        background-color: #333;
         padding: 10px 3rem 20px;
         opacity: 0;
         text-align: center;
         pointer-events: none;
         transition: 0.3s ease;
-        z-index: 999; /* رفع ترتيب القائمة لتكون فوق طبقة الهوم والكلام */
+        z-index: 999;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
     }
 
@@ -168,7 +169,7 @@ html, body {
     text-align: center;
     align-items: center;
     flex-direction: column;
-    height: 90vh;
+    height: calc(100vh - 80px);
     color: white;
 }
 
@@ -626,12 +627,9 @@ footer {
     .review-item {
         width: 45%;
     }
-    #offer .container{
+
+    #offer .container {
         margin: 0 4rem;
-    }
-    
-    .product-items {
-        gap: 15px;
     }
 }
 
@@ -647,8 +645,12 @@ footer {
         padding: 0 1.5rem;
     }
 
+    .logo img {
+        width: 80px; /* تصغير اللوجو للهاتف */
+    }
+
     .content {
-        height: 80vh;
+        height: calc(100vh - 80px);
         padding: 0 10px;
     }
 
@@ -672,7 +674,7 @@ footer {
         padding: 15px 20px;
     }
 
-    /* قسم من نحن */
+    /* قسم من نحن - تعديل عرض الصورة */
     .about-item {
         flex-direction: column-reverse;
         text-align: center;
@@ -687,12 +689,13 @@ footer {
     }
 
     .about-item img {
-        width: 100%;
-        max-width: 280px;
-        border-radius: 50%;
+        width: 80%; /* جعل عرض صورة قسم "عن الموقع" مريحاً للهاتف */
+        max-width: 250px;
+        height: auto;
+        border-radius: 20px;
     }
 
-    /* المنتجات والعروض: عنصرين بكل صف باستخدام Flexbox */
+    /* المنتجات والعروض - تعديل عرض صور المنتجات */
     .product-items, .offer-items {
         display: flex;
         flex-wrap: wrap;
@@ -703,15 +706,30 @@ footer {
     .product-item, .offer-item {
         width: calc(50% - 6px);
         max-width: 100%;
-        padding: 15px 5px;
+        padding: 10px 5px;
         box-sizing: border-box;
     }
 
+    /* تعديل أبعاد صور المنتجات والعروض */
     .product-item img, .offer-item img {
         width: 100%;
-        max-width: 110px;
-        height: 100px;
-        object-fit: contain;
+        max-width: 120px; /* العرض الأقصى للصور داخل الكارت */
+        height: 120px;    /* تثبيت الارتفاع لمنع اختلال التصميم */
+        object-fit: contain; /* إظهار الصورة بالكامل دون قص */
+    }
+
+    /* صور المعرض - تعديل العرض للصور */
+    .gallery-img img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* صور تقييمات العملاء */
+    .review-item img {
+        width: 80px;
+        height: 80px;
     }
 
     /* قسم التقييمات */
@@ -731,13 +749,6 @@ footer {
     #concat {
         padding: 20px 15px;
     }
-
-    /* المعرض */
-    .gallery-img img {
-        width: 100%;
-        height: auto;
-        max-width: 320px;
-    }
 }
 
 /* ==========================================
@@ -756,7 +767,10 @@ footer {
         padding: 6px 18px;
         font-size: 14px;
     }
-    .product-item img{
-        width: 150px;
+
+    /* تصغير إضافي لصور المنتجات على الشاشات الصغير جداً */
+    .product-item img, .offer-item img {
+        max-width: 90px;
+        height: 90px;
     }
 }
