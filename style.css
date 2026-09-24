@@ -751,26 +751,3 @@ footer {
     }
 }
 
-/* ==========================================
-   3. الشاشات الصغيرة جداً (max-width 400px)
-   ========================================== */
-@media (max-width: 400px) {
-    .content h3 {
-        font-size: 24px;
-    }
-
-    .content p {
-        font-size: 14px;
-    }
-
-    .shoop button {
-        padding: 6px 18px;
-        font-size: 14px;
-    }
-
-    /* تصغير إضافي لصور المنتجات على الشاشات الصغير جداً */
-    .product-item img, .offer-item img {
-        max-width: 90px;
-        height: 90px;
-    }
-}
